@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import tesis.user.models.User;
 import tesis.user.repositories.UserRepository;
 
-@RequestMapping
+@RequestMapping("users")
 @RestController
 @Slf4j
 @XRayEnabled
