@@ -1,4 +1,4 @@
-package tesis.user.xray;
+package mymarket.user.xray;
 
 import com.amazonaws.xray.javax.servlet.AWSXRayServletFilter;
 import org.springframework.context.annotation.Bean;

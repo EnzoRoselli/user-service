@@ -1,4 +1,4 @@
-package tesis.user.configs;
+package mymarket.user.configs;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,7 +17,7 @@ public class SwaggerConfiguration {
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("tesis.user"))
+                .apis(RequestHandlerSelectors.basePackage("mymarket.user"))
                 .paths(PathSelectors.any())
                 .build();
     }

@@ -1,8 +1,8 @@
-package tesis.user.repositories;
+package mymarket.user.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import tesis.user.models.User;
+import mymarket.user.models.User;
 
 import java.util.Optional;
 

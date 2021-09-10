@@ -1,4 +1,4 @@
-package tesis.user.models;
+package mymarket.user.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
