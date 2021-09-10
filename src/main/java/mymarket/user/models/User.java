@@ -26,8 +26,8 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Builder.Default
-    @Column(name = "role")
+    @Column(name = "role", nullable = false)
     private String role="user";
-    @Column(name = "email")
+    @Column(name = "email", nullable = false)
     private String email;
 }
