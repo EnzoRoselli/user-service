@@ -1,7 +1,7 @@
-package mymarket.user.controllers;
+package mymarket.user.controller;
 
 import lombok.extern.slf4j.Slf4j;
-import mymarket.user.exceptions.ErrorMessage;
+import mymarket.user.exception.ErrorMessage;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
-import mymarket.user.exceptions.UserNotFoundException;
+import mymarket.user.exception.UserNotFoundException;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;

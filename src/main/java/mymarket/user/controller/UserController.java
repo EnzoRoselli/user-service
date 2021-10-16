@@ -1,11 +1,11 @@
-package mymarket.user.controllers;
+package mymarket.user.controller;
 
 import com.amazonaws.xray.spring.aop.XRayEnabled;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
-import mymarket.user.models.User;
-import mymarket.user.services.UserService;
+import mymarket.user.model.User;
+import mymarket.user.service.UserService;
 
 @RequestMapping("/users")
 @RestController

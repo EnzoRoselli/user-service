@@ -1,8 +1,8 @@
-package mymarket.user.repositories;
+package mymarket.user.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import mymarket.user.models.User;
+import mymarket.user.model.User;
 
 import java.util.Optional;
 

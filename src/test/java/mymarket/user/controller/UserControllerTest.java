@@ -1,9 +1,9 @@
-package mymarket.user.controllers;
+package mymarket.user.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import mymarket.user.exceptions.UserNotFoundException;
-import mymarket.user.models.User;
-import mymarket.user.services.UserService;
+import mymarket.user.exception.UserNotFoundException;
+import mymarket.user.model.User;
+import mymarket.user.service.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

@@ -1,8 +1,8 @@
-package mymarket.user.services;
+package mymarket.user.service;
 
-import mymarket.user.exceptions.UserNotFoundException;
-import mymarket.user.models.User;
-import mymarket.user.repositories.UserRepository;
+import mymarket.user.exception.UserNotFoundException;
+import mymarket.user.model.User;
+import mymarket.user.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

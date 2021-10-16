@@ -1,4 +1,4 @@
-package mymarket.user.exceptions;
+package mymarket.user.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

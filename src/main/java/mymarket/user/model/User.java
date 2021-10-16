@@ -1,4 +1,4 @@
-package mymarket.user.models;
+package mymarket.user.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

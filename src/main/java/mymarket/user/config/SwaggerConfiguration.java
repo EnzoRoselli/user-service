@@ -1,4 +1,4 @@
-package mymarket.user.configs;
+package mymarket.user.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,10 +1,10 @@
-package mymarket.user.services;
+package mymarket.user.service;
 
 import lombok.RequiredArgsConstructor;
-import mymarket.user.repositories.UserRepository;
+import mymarket.user.repository.UserRepository;
 import org.springframework.stereotype.Service;
-import mymarket.user.exceptions.UserNotFoundException;
-import mymarket.user.models.User;
+import mymarket.user.exception.UserNotFoundException;
+import mymarket.user.model.User;
 
 @Service
 @RequiredArgsConstructor
