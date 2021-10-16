@@ -132,6 +132,7 @@
                                 <exclude>**/xray/**</exclude>
                                 <exclude>**/model/**</exclude>
                                 <exclude>**/config/**</exclude>
+                                <exclude>**/exception/**</exclude>
                             </excludes>
                         </configuration>
                     </execution>
