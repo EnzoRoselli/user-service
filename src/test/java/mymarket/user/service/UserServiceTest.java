@@ -86,7 +86,7 @@ class UserServiceTest {
     @Test
     public void getById_NonexistentId_UserNotFoundException(){
         //given
-        BDDMockito.willThrow(new UserNotFoundException("User with id 1 not found.")).given(userRepository).findById(anyLong());
+        given(userRepository.findById(anyLong())).willReturn(Optional.empty());
 
         //when
         when(() -> userService.getById(1L));
@@ -116,8 +116,7 @@ class UserServiceTest {
     @Test
     public void getByEmail_NonexistentId_UserNotFoundException(){
         //given
-        willThrow(new UserNotFoundException("User with email fake@email.com not found."))
-                .given(userRepository).findByEmail(anyString());
+        given(userRepository.findByEmail(anyString())).willReturn(Optional.empty());
 
         //when
         when(() -> userService.getByEmail("fake@email.com"));
