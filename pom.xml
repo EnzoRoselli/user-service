@@ -130,8 +130,8 @@
                             <excludes>
                                 <exclude>**/*UserApplication.class</exclude>
                                 <exclude>**/xray/**</exclude>
-                                <exclude>**/models/**</exclude>
-                                <exclude>**/configs/**</exclude>
+                                <exclude>**/model/**</exclude>
+                                <exclude>**/config/**</exclude>
                             </excludes>
                         </configuration>
                     </execution>
