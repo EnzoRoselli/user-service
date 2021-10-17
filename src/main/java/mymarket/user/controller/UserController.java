@@ -3,9 +3,9 @@ package mymarket.user.controller;
 import com.amazonaws.xray.spring.aop.XRayEnabled;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.*;
 import mymarket.user.model.User;
 import mymarket.user.service.UserService;
+import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/users")
 @RestController
@@ -27,8 +27,12 @@ public class UserController {
     }
 
     @GetMapping("{id}")
-    public User getById(@PathVariable Long id) { return userService.getById(id); }
+    public User getById(@PathVariable Long id) {
+        return userService.getById(id);
+    }
 
     @GetMapping
-    public User getByEmail(@RequestParam("email") String email){ return userService.getByEmail(email); }
+    public User getByEmail(@RequestParam("email") String email) {
+        return userService.getByEmail(email);
+    }
 }

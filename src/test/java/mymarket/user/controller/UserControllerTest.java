@@ -1,7 +1,7 @@
 package mymarket.user.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import mymarket.user.exception.UserNotFoundException;
+import mymarket.exception.commons.exception.NotFoundException;
 import mymarket.user.model.User;
 import mymarket.user.service.UserService;
 import org.junit.jupiter.api.BeforeEach;
@@ -134,7 +134,7 @@ public class UserControllerTest {
     @Test
     public void getById_NonexistentId_UserNotFoundException() throws Exception {
         //given
-        BDDMockito.willThrow(new UserNotFoundException("")).given(userService).getById(anyLong());
+        BDDMockito.willThrow(new NotFoundException("")).given(userService).getById(anyLong());
 
         //when
         MockHttpServletResponse response = mockMvc.perform(get("/users/150")
@@ -165,7 +165,7 @@ public class UserControllerTest {
     @Test
     public void getByEmail_NonexistentEmail_UserNotFoundException() throws Exception {
         //given
-        willThrow(new UserNotFoundException("")).given(userService).getByEmail(anyString());
+        willThrow(new NotFoundException("")).given(userService).getByEmail(anyString());
 
         //when
         MockHttpServletResponse response = mockMvc.perform(get("/users?email=random@email.com")

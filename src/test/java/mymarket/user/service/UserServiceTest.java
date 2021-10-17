@@ -1,12 +1,12 @@
 package mymarket.user.service;
 
-import mymarket.user.exception.UserNotFoundException;
+import mymarket.exception.commons.exception.NotFoundException;
 import mymarket.user.model.User;
 import mymarket.user.repository.UserRepository;
+import org.assertj.core.api.BDDAssertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -20,8 +20,6 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.BDDMockito.*;
 import static org.mockito.Mockito.times;
-import org.assertj.core.api.BDDAssertions;
-
 
 
 @ExtendWith(MockitoExtension.class)
@@ -41,7 +39,7 @@ class UserServiceTest {
     }
 
     @Test
-    public void save_ExpectedValues_Ok(){
+    public void save_ExpectedValues_Ok() {
         //given
         given(userRepository.save(any())).willReturn(user);
 
@@ -55,7 +53,7 @@ class UserServiceTest {
     }
 
     @Test
-    public void deleteById_ExpectedValues_Ok(){
+    public void deleteById_ExpectedValues_Ok() {
         //given
         willDoNothing().given(userRepository).deleteById(anyLong());
 
@@ -69,7 +67,7 @@ class UserServiceTest {
     }
 
     @Test
-    public void getById_ExpectedValues_Ok(){
+    public void getById_ExpectedValues_Ok() {
         //given
         Optional<User> userOptional = Optional.of(user);
         given(userRepository.findById(anyLong())).willReturn(userOptional);
@@ -84,7 +82,7 @@ class UserServiceTest {
     }
 
     @Test
-    public void getById_NonexistentId_UserNotFoundException(){
+    public void getById_NonexistentId_UserNotFoundException() {
         //given
         given(userRepository.findById(anyLong())).willReturn(Optional.empty());
 
@@ -93,13 +91,13 @@ class UserServiceTest {
 
         //then
         BDDAssertions.then(caughtException())
-                .isInstanceOf(UserNotFoundException.class)
+                .isInstanceOf(NotFoundException.class)
                 .hasMessage("User with id 1 not found.")
                 .hasNoCause();
     }
 
     @Test
-    public void getByEmail_ExpectedValues_Ok(){
+    public void getByEmail_ExpectedValues_Ok() {
         //given
         Optional<User> userOptional = Optional.of(user);
         given(userRepository.findByEmail(anyString())).willReturn(userOptional);
@@ -114,7 +112,7 @@ class UserServiceTest {
     }
 
     @Test
-    public void getByEmail_NonexistentId_UserNotFoundException(){
+    public void getByEmail_NonexistentId_UserNotFoundException() {
         //given
         given(userRepository.findByEmail(anyString())).willReturn(Optional.empty());
 
@@ -123,7 +121,7 @@ class UserServiceTest {
 
         //then
         BDDAssertions.then(caughtException())
-                .isInstanceOf(UserNotFoundException.class)
+                .isInstanceOf(NotFoundException.class)
                 .hasMessage("User with email fake@email.com not found.")
                 .hasNoCause();
     }
