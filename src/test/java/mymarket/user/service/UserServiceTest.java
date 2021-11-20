@@ -43,7 +43,7 @@ class UserServiceTest {
     @Test
     public void save_ExpectedValues_Ok(){
         //given
-        given(userRepository.save(any())).willReturn(user);
+        given(userRepository.save(user)).willReturn(user);
 
         //when
         User userFromRepository = userService.save(user);
@@ -70,15 +70,17 @@ class UserServiceTest {
 
     @Test
     public void getById_ExpectedValues_Ok(){
+        Long userId = user.getId();
+
         //given
         Optional<User> userOptional = Optional.of(user);
-        given(userRepository.findById(anyLong())).willReturn(userOptional);
+        given(userRepository.findById(userId)).willReturn(userOptional);
 
         //when
-        User userFromRepository = userService.getById(1L);
+        User userFromRepository = userService.getById(userId);
 
         //then
-        then(userRepository).should().findById(1L);
+        then(userRepository).should().findById(userId);
         assertThat(userFromRepository).isNotNull();
         assertThat(userFromRepository).isEqualTo(userOptional.get());
     }

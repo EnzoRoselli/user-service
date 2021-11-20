@@ -52,7 +52,7 @@ public class UserControllerTest {
     @Test
     public void save_ExpectedValues_Ok() throws Exception {
         //given
-        given(userService.save(any())).willReturn(user);
+        given(userService.save(user)).willReturn(user);
 
         //when
         MockHttpServletResponse response = mockMvc.perform(post("/users/")
@@ -63,7 +63,7 @@ public class UserControllerTest {
 
         //then
         then(userService).should().save(user);
-        assertThat(response.getStatus()).isEqualTo(HttpStatus.OK.value());
+        assertThat(response.getStatus()).isEqualTo(HttpStatus.CREATED.value());
         assertThat(response.getContentType()).isEqualTo(MediaType.APPLICATION_JSON.toString());
         assertThat(response.getContentAsString()).isEqualTo(asJsonString(user));
     }
@@ -87,62 +87,70 @@ public class UserControllerTest {
 
     @Test
     public void deleteById_ExpectedValues_Ok() throws Exception {
+        Long userId = 4L;
+
         //given
         willDoNothing().given(userService).deleteById(anyLong());
 
         //when
-        MockHttpServletResponse response = mockMvc.perform(delete("/users/4")
+        MockHttpServletResponse response = mockMvc.perform(delete("/users/" + userId)
                 .accept(MediaType.APPLICATION_JSON))
                 .andReturn().getResponse();
 
         //then
-        then(userService).should().deleteById(4L);
+        then(userService).should().deleteById(userId);
         assertThat(response.getStatus()).isEqualTo(HttpStatus.OK.value());
     }
 
     @Test
     public void deleteById_NonexistentId_EmptyResultDataAccessException() throws Exception {
+        Long userId = 150L;
+
         //given
         willThrow(new EmptyResultDataAccessException(0)).given(userService).deleteById(anyLong());
 
         //when
-        MockHttpServletResponse response = mockMvc.perform(delete("/users/150")
+        MockHttpServletResponse response = mockMvc.perform(delete("/users/" + userId)
                 .accept(MediaType.APPLICATION_JSON))
                 .andReturn().getResponse();
 
         //then
-        then(userService).should().deleteById(150L);
+        then(userService).should().deleteById(userId);
         assertThat(response.getStatus()).isEqualTo(HttpStatus.NOT_FOUND.value());
     }
 
     @Test
     public void getById_ExpectedValues_Ok() throws Exception {
+        Long userId = user.getId();
+
         //given
-        given(userService.getById(anyLong())).willReturn(user);
+        given(userService.getById(userId)).willReturn(user);
 
         //when
-        MockHttpServletResponse response = mockMvc.perform(get("/users/4")
+        MockHttpServletResponse response = mockMvc.perform(get("/users/" + userId)
                 .accept(MediaType.APPLICATION_JSON))
                 .andReturn().getResponse();
 
         //then
-        then(userService).should().getById(4L);
+        then(userService).should().getById(userId);
         assertThat(response.getStatus()).isEqualTo(HttpStatus.OK.value());
         assertThat(response.getContentAsString()).isEqualTo(asJsonString(user));
     }
 
     @Test
     public void getById_NonexistentId_UserNotFoundException() throws Exception {
+        Long userId = 150L;
+
         //given
-        BDDMockito.willThrow(new UserNotFoundException("")).given(userService).getById(anyLong());
+        BDDMockito.willThrow(new UserNotFoundException("")).given(userService).getById(userId);
 
         //when
-        MockHttpServletResponse response = mockMvc.perform(get("/users/150")
+        MockHttpServletResponse response = mockMvc.perform(get("/users/" + userId)
                 .accept(MediaType.APPLICATION_JSON))
                 .andReturn().getResponse();
 
         //then
-        then(userService).should().getById(150L);
+        then(userService).should().getById(userId);
         assertThat(response.getStatus()).isEqualTo(HttpStatus.NOT_FOUND.value());
     }
 
