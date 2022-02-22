@@ -63,6 +63,9 @@ public class UserControllerTest {
 
         //then
         then(userService).should().save(user);
+        assertThat(response).isNotNull();
+        assertThat(response.getStatus()).isNotNull();
+        assertThat(response.getContentAsString()).isNotNull();
         assertThat(response.getStatus()).isEqualTo(HttpStatus.CREATED.value());
         assertThat(response.getContentType()).isEqualTo(MediaType.APPLICATION_JSON.toString());
         assertThat(response.getContentAsString()).isEqualTo(asJsonString(user));
@@ -82,6 +85,8 @@ public class UserControllerTest {
 
         //then
         then(userService).should().save(user);
+        assertThat(response).isNotNull();
+        assertThat(response.getStatus()).isNotNull();
         assertThat(response.getStatus()).isEqualTo(HttpStatus.BAD_REQUEST.value());
     }
 
@@ -99,6 +104,8 @@ public class UserControllerTest {
 
         //then
         then(userService).should().deleteById(userId);
+        assertThat(response).isNotNull();
+        assertThat(response.getStatus()).isNotNull();
         assertThat(response.getStatus()).isEqualTo(HttpStatus.OK.value());
     }
 
@@ -116,6 +123,8 @@ public class UserControllerTest {
 
         //then
         then(userService).should().deleteById(userId);
+        assertThat(response).isNotNull();
+        assertThat(response.getStatus()).isNotNull();
         assertThat(response.getStatus()).isEqualTo(HttpStatus.NOT_FOUND.value());
     }
 
@@ -133,6 +142,9 @@ public class UserControllerTest {
 
         //then
         then(userService).should().getById(userId);
+        assertThat(response).isNotNull();
+        assertThat(response.getStatus()).isNotNull();
+        assertThat(response.getContentAsString()).isNotNull();
         assertThat(response.getStatus()).isEqualTo(HttpStatus.OK.value());
         assertThat(response.getContentAsString()).isEqualTo(asJsonString(user));
     }
@@ -151,6 +163,8 @@ public class UserControllerTest {
 
         //then
         then(userService).should().getById(userId);
+        assertThat(response).isNotNull();
+        assertThat(response.getStatus()).isNotNull();
         assertThat(response.getStatus()).isEqualTo(HttpStatus.NOT_FOUND.value());
     }
 
@@ -166,6 +180,9 @@ public class UserControllerTest {
 
         //then
         then(userService).should().getByEmail("fake@email.com");
+        assertThat(response).isNotNull();
+        assertThat(response.getStatus()).isNotNull();
+        assertThat(response.getContentAsString()).isNotNull();
         assertThat(response.getStatus()).isEqualTo(HttpStatus.OK.value());
         assertThat(response.getContentAsString()).isEqualTo(asJsonString(user));
     }
@@ -182,6 +199,8 @@ public class UserControllerTest {
 
         //then
         then(userService).should().getByEmail("random@email.com");
+        assertThat(response).isNotNull();
+        assertThat(response.getStatus()).isNotNull();
         assertThat(response.getStatus()).isEqualTo(HttpStatus.NOT_FOUND.value());
     }
 

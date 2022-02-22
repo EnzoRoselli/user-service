@@ -51,7 +51,9 @@ class UserServiceTest {
         //then
         then(userRepository).should().save(user);
         assertThat(userFromRepository).isNotNull();
-        assertThat(userFromRepository).isEqualTo(user);
+        assertThat(userFromRepository.getEmail()).isEqualTo(user.getEmail());
+        assertThat(userFromRepository.getId()).isEqualTo(user.getId());
+        assertThat(userFromRepository.getRole()).isEqualTo(user.getRole());
     }
 
     @Test
@@ -82,7 +84,10 @@ class UserServiceTest {
         //then
         then(userRepository).should().findById(userId);
         assertThat(userFromRepository).isNotNull();
-        assertThat(userFromRepository).isEqualTo(userOptional.get());
+        assertThat(userFromRepository.getEmail()).isEqualTo(userOptional.get().getEmail());
+        assertThat(userFromRepository.getId()).isEqualTo(userOptional.get().getId());
+        assertThat(userFromRepository.getRole()).isEqualTo(userOptional.get().getRole());
+
     }
 
     @Test
@@ -112,7 +117,9 @@ class UserServiceTest {
         //then
         then(userRepository).should().findByEmail("fake@email.com");
         assertThat(userFromRepository).isNotNull();
-        assertThat(userFromRepository).isEqualTo(userOptional.get());
+        assertThat(userFromRepository.getEmail()).isEqualTo(userOptional.get().getEmail());
+        assertThat(userFromRepository.getId()).isEqualTo(userOptional.get().getId());
+        assertThat(userFromRepository.getRole()).isEqualTo(userOptional.get().getRole());
     }
 
     @Test
